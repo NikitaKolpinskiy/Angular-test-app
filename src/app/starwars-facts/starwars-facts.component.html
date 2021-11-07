@@ -1,0 +1,58 @@
+<div class="star-wars-container">
+    <div class="generate-wrapper">
+        <header class="header-wrapper">
+            <button (click)="navigateToSelectedPage('/init')">Go to Initial Page</button>
+            <h2>Star Wars Geeks Info</h2>
+            <button (click)="navigateToSelectedPage('/main')">Go to user generation Page</button>
+        </header>
+        <mat-form-field appearance="fill">
+            <mat-label>Select Movie Part</mat-label>
+            <mat-select [(ngModel)]="selectedMovie">
+                <mat-option *ngFor="let count of allStarWarsFilms" [value]="count.value">
+                    {{count.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button (click)="getStarWarsInfo()" class="generate-button">
+            Generate random fact
+        </button>
+    </div>
+    <div class="star-wars-info_container">
+        <h2>{{starWarsInfo$?.title}}</h2>
+        <div (click)="getCurrentInfo($event)" *ngIf="!!starWarsInfo$" class="star-wars_button-wrapper">
+            <button data-star-filter="planets">View Planets</button>
+            <button data-star-filter="starships">View Starship</button>
+            <button data-star-filter="characters">View Characters</button>
+        </div>
+    </div>
+    <ul class="planet-container">
+        <li *ngFor="let planet of currentFilmInfo.planets | async">
+            <h4>{{planet?.name}}</h4>
+            <p>Planet diameter: {{planet?.diameter}}</p>
+            <p>Climate: {{planet?.climate}}</p>
+            <p>Population: {{planet?.population}}</p>
+            <p>Rotation Period: {{planet?.rotation_period}}</p>
+            <p>Terrain: {{planet?.terrain}}</p>
+        </li>
+    </ul>
+    <ul class="planet-container">
+        <li *ngFor="let character of currentFilmInfo.characters | async">
+            <h4>{{character?.name}}</h4>
+            <p>Birth Year: {{character?.birth_year}}</p>
+            <p>Hair Color: {{character?.hair_color}}</p>
+            <p>Height: {{character?.height}}</p>
+            <p>Mass: {{character?.mass}}</p>
+            <p>Skin Color: {{character?.skin_color}}</p>
+        </li>
+    </ul>
+    <ul class="planet-container">
+        <li *ngFor="let starship of currentFilmInfo.starships | async">
+            <h4>{{starship?.name}}</h4>
+            <p>Model: {{starship?.model}}</p>
+            <p>Crew: {{starship?.crew}}</p>
+            <p>Consumables: {{starship?.consumables}}</p>
+            <p>Manufacturer: {{starship?.manufacturer}}</p>
+            <p>Max Speed: {{starship?.max_atmosphering_speed}}</p>
+        </li>
+    </ul>
+</div>

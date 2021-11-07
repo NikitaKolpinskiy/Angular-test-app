@@ -1,0 +1,57 @@
+:host {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(0deg, #A16FDD, #C1A3D4 99.71%);
+}
+
+.greeting-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+  }
+
+  p {
+    font-size: 2.0rem;
+    margin-bottom: 25px;
+  }
+
+  .button-wrapper {
+    display: flex;
+    align-items: center;
+
+    .generator-link {
+      button {
+        padding: 10px;
+        height: 50px;
+        background: linear-gradient(to bottom, #0929A8, #0F25B6);
+        border: none;
+        border-radius: 8px;
+        margin-right: 15px;
+
+        &:hover {
+          background: linear-gradient(5deg, #0A154E, #0C1755 80.71%);
+        }
+      }
+
+      a {
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: white;
+
+        &:hover {
+          color: #2574D1;
+        }
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,95 @@
+.star-wars-container {
+  min-height: 100vh;
+  background: linear-gradient(to right, #acb6e5, #86fde8);
+  padding: 10px;
+
+  .generate-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+
+    .header-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h2 {
+        margin: 0 0 10px 65px;
+        font-size: 1.5rem;
+      }
+
+      button {
+        padding: 10px;
+        outline: none;
+        border: 1px solid black;
+        border-radius: 5px;
+        height: 45px;
+        cursor: pointer;
+        background-color: black;
+        color: white;
+      }
+    }
+
+
+
+    .generate-button {
+      background-color: yellow;
+      outline: none;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  }
+
+  .star-wars-info_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .star-wars_button-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      button {
+        margin-right: 5px;
+        outline: none;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &:hover {
+          color: white;
+          background: linear-gradient(314.65deg, #854DFD -0.61%, #4DA8FD 100%);
+        }
+      }
+    }
+  }
+
+  .planet-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      margin: 0 10px 15px 0;
+      border-radius: 5px;
+      border: 1px black solid;
+      padding: 10px;
+      width: 350px;
+
+      h4 {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}

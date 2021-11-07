@@ -1,0 +1,96 @@
+<div class="main-wrapper">
+    <header class="header-wrapper">
+        <button (click)="routeToPage('/init')" class="back-button">Go to Greeting page</button>
+        <button (click)="routeToPage('/star-wars')" class="back-button">Go to star wars page</button>
+    </header>
+    <div class="filter-container">
+        <div class="filter-wrapper">
+            <mat-form-field appearance="fill">
+                <mat-label>Select Count</mat-label>
+                <mat-select [(ngModel)]="selectedUserCounts">
+                    <mat-option *ngFor="let count of allUserCounts" [value]="count.value">
+                        {{count.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Select Sex</mat-label>
+                <mat-select [(ngModel)]="selectedSex">
+                    <mat-option value="female">
+                        Female
+                    </mat-option>
+                    <mat-option value="male">
+                        Male
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Select Nationality</mat-label>
+                <mat-select [(ngModel)]="selectedNationality" multiple>
+                    <mat-option *ngFor="let nation of allNations" [value]="nation.value">
+                        {{nation.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div (click)="makeRequest()" class="request-button"><span></span></div>
+    </div>
+    <div class="switch-mode-wrapper" *ngIf="!!users$">
+        <button (click)="setTableView()" class="switch-mode-wrapper_table-button">Table</button>
+        <button (click)="setCardView()" class="switch-mode-wrapper_cards-button">Cards</button>
+    </div>
+    <ul class="users-list-wrapper" *ngIf="isCardView; else tableView">
+        <li *ngFor="let user of users$" [ngClass]="{
+           'male-color': user.gender === male,
+           'female-color': user.gender === female
+        }">
+            <img src={{user?.picture.large}} alt="user">
+            <p>{{user?.name?.title}} {{user?.name?.first}} {{user?.name?.last}}</p>
+            <p>{{user?.dob.age}} years</p>
+            <p class="capitalize">{{user?.gender}}</p>
+            <p>{{user?.location.country}} {{user?.location.city}}</p>
+            <p>{{user?.email}}</p>
+            <p>{{user?.phone}}</p>
+        </li>
+    </ul>
+    <ng-template #tableView>
+        <table class="user-info-table">
+            <thead>
+                <tr>
+                    <th align="left">Personal Photo</th>
+                    <th align="left">Full Name</th>
+                    <th align="left">Year of Birth</th>
+                    <th align="left">Gender</th>
+                    <th align="left">Location</th>
+                    <th align="left">Email</th>
+                    <th align="left">Phone Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users$">
+                    <td>
+                        <img src={{user?.picture.large}} alt="user">
+                    </td>
+                    <td>
+                        {{user?.name?.title}} {{user?.name?.first}} {{user?.name?.last}}
+                    </td>
+                    <td>
+                        {{user?.dob.age}}
+                    </td>
+                    <td>
+                        {{user?.gender}}
+                    </td>
+                    <td>
+                        {{user?.location.country}} {{user?.location.city}}
+                    </td>
+                    <td>
+                        {{user?.email}}
+                    </td>
+                    <td>
+                        {{user?.phone}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-template>
+</div>
